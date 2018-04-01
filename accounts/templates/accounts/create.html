@@ -1,0 +1,13 @@
+{% extends 'shared_template.html' %}
+
+{% block title %} Novo Usuário {% endblock %}
+
+{% block content %}
+    <h1>Nova Conta</h1>
+    <form action="{% url 'accounts:criar' %}" method="POST">
+        {% csrf_token %}
+        {{ form }}
+
+        <input type="submit" value="Criar">
+    </form>
+{% endblock %}
