@@ -1,0 +1,22 @@
+{% extends 'shared_template.html' %}
+{% load i18n %}
+
+{% block staticfiles %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'artigos/styles.css' %}">
+{% endblock %}
+
+{% block title %}
+    Detalhes
+{% endblock %}
+
+{% block content %}
+    <div class="artigo">
+        <div class="titulo">{{ artigo.titulo }}</div>
+        <div class="banner"><img src="{{ artigo.banner.url }}" alt="Banner do artigo"></div>
+        <div class="texto">{{ artigo.texto | safe }}</div>
+        {% language 'pt-br' %}
+        <div class="data">{{ artigo.data }}</div>
+        {% endlanguage %}
+    </div>
+{% endblock %}
