@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 def new_account_view(request):
     if request.method == 'POST':
@@ -20,8 +20,16 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
+
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
             return redirect('artigos:listar')
     else:
         form = AuthenticationForm()
         
     return render(request, 'accounts/login.html', {'form': form})
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('artigos:listar')

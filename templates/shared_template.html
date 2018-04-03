@@ -11,6 +11,18 @@
     <title>{% block title %}{% endblock %} - Brezend</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <form action="{% url 'accounts:logout' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Logout">
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
     {% block content %}
     {% endblock %}
 </body>
