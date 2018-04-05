@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Artigo
 from django.contrib.auth.decorators import login_required
+from .forms import NovoArtigoForm
 
 def artigos_view(request):
     artigos = Artigo.objects.all()
@@ -12,4 +13,14 @@ def artigo_detalhe_view(request, slug):
 
 @login_required(login_url='accounts:login')
 def artigos_novo_view(request):
-    return render(request, 'artigos/create.html')
+    if request.method == 'POST':
+        form = NovoArtigoForm(request.POST, request.FILES)
+        if form.is_valid():
+            artigo = form.save(commit=False)
+            artigo.autor = request.user
+            artigo.save()
+            return redirect('artigos:listar')
+    else:
+        form = NovoArtigoForm()
+    
+    return render(request, 'artigos/create.html', {'form': form})

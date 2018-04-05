@@ -1,5 +1,16 @@
 {% extends 'shared_template.html' %}
 
+{% block title %}
+    Novo Artigo
+{% endblock %}
+
 {% block content %}
     <h2>Novo Artigo</h2>
+    <form action="{% url 'artigos:criar' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form }}
+
+        <input type="submit" value="Criar">
+    </form>
 {% endblock %}
