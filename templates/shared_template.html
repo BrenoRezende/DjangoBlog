@@ -14,12 +14,19 @@
     <header>
         <nav>
             <ul>
-                <li>
-                    <form action="{% url 'accounts:logout' %}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" value="Logout">
-                    </form>
-                </li>
+                {% if user.is_authenticated %}
+                    <li>
+                        <form action="{% url 'accounts:logout' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" value="Logout">
+                        </form>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'accounts:login' %}">Login</a>
+                        <a href="{% url 'accounts:criar' %}">Nova Conta</a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
     </header>
