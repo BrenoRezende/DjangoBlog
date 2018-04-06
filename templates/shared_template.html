@@ -12,6 +12,7 @@
 </head>
 <body>
     <header>
+        <h1><a href="{% url 'home:index' %}">Brezend</a></h1>
         <nav>
             <ul>
                 {% if user.is_authenticated %}
@@ -21,9 +22,17 @@
                             <input type="submit" value="Logout">
                         </form>
                     </li>
+                    <li>
+                        <a href="{% url 'artigos:listar' %}">Artigos</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'artigos:criar' %}">Novo Artigo</a>
+                    </li>
                 {% else %}
                     <li>
                         <a href="{% url 'accounts:login' %}">Login</a>
+                    </li>
+                    <li>
                         <a href="{% url 'accounts:criar' %}">Nova Conta</a>
                     </li>
                 {% endif %}

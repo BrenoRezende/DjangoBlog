@@ -1,3 +1,31 @@
 body {
     background-color: #fbfbfb;
 }
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 0;
+}
+
+    header nav {
+        justify-self: end;
+    }
+
+        header nav li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        header nav input {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            color: #b52626;
+        }
+
+a {
+    text-decoration: none;
+    outline: none;
+}

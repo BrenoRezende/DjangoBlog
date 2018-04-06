@@ -1,12 +1,16 @@
 {% extends 'shared_template.html' %}
 
+{% block staticfiles %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/styles.css' %}">
+{% endblock %}
+
 {% block title %}
     Página Inicial
 {% endblock %}
 
 {% block content %}
-    <h1>Bem-vindo ao meu blog.</h1>
-    <p>
-        <a href="{% url 'artigos:listar' %}">Artigos</a>
-    </p>
+    <div class="home">
+        <h1>Bem-vindo ao blog</h1>
+    </div>
 {% endblock %}
