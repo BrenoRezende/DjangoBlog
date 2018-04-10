@@ -1,5 +1,4 @@
 {% extends 'shared_template.html' %}
-{% load i18n %}
 
 {% block staticfiles %}
     {% load static %}
@@ -15,8 +14,6 @@
         <div class="titulo">{{ artigo.titulo }}</div>
         <div class="banner"><img src="{{ artigo.banner.url }}" alt="Banner do artigo"></div>
         <div class="texto">{{ artigo.texto | safe }}</div>
-        {% language 'pt-br' %}
         <div class="data">{{ artigo.autor }} - {{ artigo.data }}</div>
-        {% endlanguage %}
     </div>
 {% endblock %}

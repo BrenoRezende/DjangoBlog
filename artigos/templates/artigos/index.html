@@ -1,5 +1,4 @@
 {% extends 'shared_template.html' %}
-{% load i18n %}
 
 {% block title %}
     Artigos
@@ -13,9 +12,7 @@
             <hr />
             <a href="{% url 'artigos:detalhes' slug=artigo.slug %}"><div class="titulo">{{ artigo.titulo }}</div></a>
             <div class="texto">{{ artigo.amostra_texto | safe }}</div>
-            {% language 'pt-br' %}
             <div class="data">{{ artigo.data }}</div>
-            {% endlanguage %}
         </div>
     {% endfor %}
 </div>
